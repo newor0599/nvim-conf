@@ -9,6 +9,7 @@ return {
 	config = function()
 	    vim.keymap.set('n', 'E', vim.lsp.buf.definition)
 	    vim.keymap.set('n', 'K', vim.lsp.buf.hover)
+	    vim.keymap.set({'n','v'}, "<leader>ca", vim.lsp.buf.code_action)
 	end
     },
     {
@@ -28,6 +29,18 @@ return {
 	end
     },
     -- Luasnip
+    {
+	"L3MON4D3/LuaSnip",
+	dependencies = {
+	    "saadparwaiz1/cmp_luasnip",
+	    "rafamadriz/friendly-snippets"
+	},
+	config = function()
+	    ls = require("luasnip")
+	    vim.keymap.set({"i", "s"}, "<C-l>", function() ls.jump( 1) end, {silent = true})
+	    vim.keymap.set({"i", "s"}, "<C-j>", function() ls.jump(-1) end, {silent = true})
+	end
+    },
 
     -- nvim cmp
     {
@@ -43,7 +56,7 @@ return {
 	    cmp.setup({
 		snippet = {
 		    expand = function(args)
-			-- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+			require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
 		    end,
 		},
 		window = {
@@ -72,8 +85,8 @@ return {
 		sources = cmp.config.sources({
 		    { name = 'nvim_lsp' },
 		    { name = 'buffer' },
-		    { name = 'path' }
-		    -- { name = 'luasnip' }, -- For luasnip users.
+		    { name = 'path' },
+		    { name = 'luasnip' }, -- For luasnip users.
 		})
 	    })
 
@@ -99,6 +112,12 @@ return {
 	    -- Set up lspconfig.
 	    local capabilities = require('cmp_nvim_lsp').default_capabilities()
 	    require('lspconfig')['lua_ls'].setup {
+		capabilities = capabilities
+	    }
+	    require('lspconfig')['tsserver'].setup {
+		capabilities = capabilities
+	    }
+	    require('lspconfig')['pyright'].setup {
 		capabilities = capabilities
 	    }
 	end
