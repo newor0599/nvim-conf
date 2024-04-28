@@ -4,3 +4,4 @@ return {
 	vim.cmd('colorscheme sonokai')
     end
 }
+
