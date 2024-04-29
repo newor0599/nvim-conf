@@ -3,10 +3,10 @@ echo "newor nvim config installation script \n"
 
 if grep -q "nvim-conf" <<< $(pwd)
 then
-	echo "Starting script"
+    echo "Starting script"
 else
-	echo "Invalid path (Make sure you are in the cloned folder"
-	exit
+    echo "Invalid path (Make sure you are in the cloned folder)"
+    exit
 fi
 
 config_exist=false
