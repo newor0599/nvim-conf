@@ -10,5 +10,9 @@ k('n','<C-k>','<C-W><C-k>')
 k('n','<C-j>','<C-W><C-j>')
 k('n','<C-h>','<C-W><C-h>')
 
+k('n','<leader>vs','<Cmd>vsp<CR>')
+k('n','<leader>hs','<Cmd>sp<CR>')
+
 k('t','<C-x>',"<C-\\><C-n>")
 k('n','<leader>x',"<Cmd>bd!<CR>")
+k('n',"<leader>t","<Cmd>terminal<CR>")
