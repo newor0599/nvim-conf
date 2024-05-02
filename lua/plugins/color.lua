@@ -1,7 +1,9 @@
+local link = "Sly-Harvey/radium.nvim"
+local name = "radium"
 return {
-    "sainnhe/sonokai",
+    link,
     config = function()
-	vim.cmd('colorscheme sonokai')
+	vim.cmd('colorscheme '..name)
     end
 }
 
