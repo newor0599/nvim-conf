@@ -83,10 +83,10 @@ return {
 		    end, {"i","s","c",}),
 		}),
 		sources = cmp.config.sources({
-		    { name = 'nvim_lsp' },
-		    { name = 'buffer' },
-		    { name = 'path' },
-		    { name = 'luasnip' }, -- For luasnip users.
+		    { name = 'nvim_lsp' }, -- LSP
+		    { name = 'buffer' },   -- Buffer
+		    { name = 'path' },     -- Path
+		    { name = 'luasnip' },  -- Snippet
 		})
 	    })
 
@@ -102,24 +102,21 @@ return {
 	    cmp.setup.cmdline(':', {
 		mapping = cmp.mapping.preset.cmdline(),
 		sources = cmp.config.sources({
-		    { name = 'path' }
-		}, {
-		    { name = 'cmdline' }
+		    { name = 'path' },
+		    { name = 'cmdline' },
+		    { name = 'buffer' }
 		}),
 		matching = { disallow_symbol_nonprefix_matching = false }
 	    })
 
 	    -- Set up lspconfig.
 	    local capabilities = require('cmp_nvim_lsp').default_capabilities()
-	    require('lspconfig')['lua_ls'].setup {
-		capabilities = capabilities
-	    }
-	    require('lspconfig')['tsserver'].setup {
-		capabilities = capabilities
-	    }
-	    require('lspconfig')['pyright'].setup {
-		capabilities = capabilities
-	    }
+	    local installed_lsp = {'lua_ls','tsserver','pyright'}
+	    for i,lsp in ipairs(installed_lsp) do
+		require('lspconfig')[lsp].setup {
+		    capabilities = capabilities
+		}
+	    end
 	end
     }
 }
