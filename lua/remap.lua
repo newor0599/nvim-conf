@@ -16,3 +16,7 @@ k('n','<leader>hs','<Cmd>sp<CR>')
 k('t','<C-x>',"<C-\\><C-n>")
 k('n','<leader>x',"<Cmd>bd!<CR>")
 k('n',"<leader>t","<Cmd>terminal<CR>")
+
+-- Fold
+k('n','f','za')
+k('v','fc','zf')
