@@ -1,13 +1,9 @@
-local link = "rebelot/kanagawa.nvim"
-local name = "kanagawa"
+local link = "jacoborus/tender.vim"
+local name = "tender"
 return {
     link,
     config = function()
 	vim.cmd('colorscheme '..name)
-	require('kanagawa').setup({
-	    transparent = true
-	})
-	vim.cmd("KanagawaCompile")
 	vim.cmd("highlight lineNr guibg=none")
 	vim.cmd("highlight lineNr guifg=none")
     end
