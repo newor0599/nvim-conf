@@ -1,7 +1,7 @@
 vim.g.mapleader = " "
 local k = vim.keymap.set
 
-k("n",";",":")
+k({"n","v"},";",":")
 k({"n","i","v","c"},"<A-q>","<Esc>",{ remap = true})
 k("n","<Esc>","<Cmd>noh<CR>")
 
@@ -18,5 +18,5 @@ k('n','<leader>x',"<Cmd>bd!<CR>")
 k('n',"<leader>t","<Cmd>terminal<CR>")
 
 -- Fold
-k('n','f','za')
+k('n','ft','za')
 k('v','fc','zf')

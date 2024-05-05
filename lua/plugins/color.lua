@@ -8,6 +8,8 @@ return {
 	    transparent = true
 	})
 	vim.cmd("KanagawaCompile")
+	vim.cmd("highlight lineNr guibg=none")
+	vim.cmd("highlight lineNr guifg=none")
     end
 }
 
