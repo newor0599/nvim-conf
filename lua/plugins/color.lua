@@ -1,5 +1,5 @@
-local link = "jacoborus/tender.vim"
-local name = "tender"
+local link = "EdenEast/nightfox.nvim"
+local name = "nightfox"
 return {
     link,
     config = function()

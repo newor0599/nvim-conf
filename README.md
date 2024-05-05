@@ -10,9 +10,11 @@
 <br>
 💬Comment toggle
 <br>
-🎨Kanagawa colorscheme
+🎨Nightfox colorscheme
 <br>
 🇳Neovide configured
+<br>
+Lualine status bar
 
 ### Installation
 ```bash
