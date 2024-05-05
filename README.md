@@ -1,10 +1,18 @@
 ## Neovim config
 
-Autocompletion
+🔌Lazy nvim plugin manager
+<br>
+⌨️ Autocompletion 
+<br>
 Code highlight
-File explorer
-Comment toggle
-Kanagawa colorscheme
+<br>
+📁File explorer
+<br>
+💬Comment toggle
+<br>
+🎨Kanagawa colorscheme
+<br>
+Neovide configured
 
 ### Installation
 ```bash
