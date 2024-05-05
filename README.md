@@ -10,5 +10,6 @@ Kanagawa colorscheme
 ```bash
     git clone https://github.com/newor0599/nvim-conf
     cd nvim-conf
+    chmod +x installation.sh
     bash installation.sh
 ```
