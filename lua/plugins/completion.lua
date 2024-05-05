@@ -60,7 +60,9 @@ return {
 		    end,
 		},
 		window = {
-		    completion = cmp.config.window.bordered(),
+		    completion = cmp.config.window.bordered({
+			winhighlight = "Normal:@text,FloatBorder:Conditional,CursorLine:PmenuSel,Search:None"
+		    }),
 		    documentation = cmp.config.window.bordered(),
 		},
 		mapping = cmp.mapping.preset.insert({
