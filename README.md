@@ -4,7 +4,7 @@
 <br>
 ⌨️ Autocompletion 
 <br>
-Code highlight
+🇹Code highlight
 <br>
 📁File explorer
 <br>
@@ -12,7 +12,7 @@ Code highlight
 <br>
 🎨Kanagawa colorscheme
 <br>
-Neovide configured
+🇳Neovide configured
 
 ### Installation
 ```bash
