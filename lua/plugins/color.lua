@@ -1,5 +1,5 @@
 local link = "EdenEast/nightfox.nvim"
-local name = "nightfox"
+local name = "duskfox"
 return {
     link,
     config = function()
