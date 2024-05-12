@@ -37,11 +37,11 @@ rm -rf ~/.config/nvim/*
 echo "Removing neovim share folder"
 rm -rf ~/.local/share/nvim
 
-echo "|Copying new config"
-echo "|_init.lua"
+echo "Copying new config"
+echo "> init.lua"
 cp -r init.lua ~/.config/nvim
 
-echo "|_lua folder"
+echo "> lua folder"
 cp -r lua ~/.config/nvim
 
-echo "New config copied"
+echo "Complete!"
