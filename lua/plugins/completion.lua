@@ -24,7 +24,7 @@ return {
 		    "lua_ls",
 		    "pyright",
 		    "tsserver",
-		    "remark_ls",
+		    "zls",
 		},
 	    }
 	end
@@ -114,7 +114,7 @@ return {
 
 	    -- Set up lspconfig.
 	    local capabilities = require('cmp_nvim_lsp').default_capabilities()
-	    local installed_lsp = {'lua_ls','tsserver','pyright', "remark_ls"}
+	    local installed_lsp = {'lua_ls','tsserver','pyright', "zls"}
 	    for i,lsp in ipairs(installed_lsp) do
 		require('lspconfig')[lsp].setup {
 		    capabilities = capabilities
