@@ -1,5 +1,5 @@
 clear
-echo "newor nvim config installation script \n"
+echo "newor neovim config installation script \n"
 
 if grep -q "nvim-conf" <<< $(pwd)
 then
@@ -14,6 +14,8 @@ config_exist=false
 if [ -n "$(ls -A XDG_CONFIG_HOME/nvim 2>/dev/null)" ]
 then
     config_exist = true
+else
+    echo "No config found"
 fi
 
 if [ config_exist ]
@@ -36,6 +38,9 @@ rm -rf ~/.config/nvim/*
 
 echo "Removing neovim share folder"
 rm -rf ~/.local/share/nvim
+
+echo "Make neovim config folder"
+mkdir -p ~/.config/nvim
 
 echo "Copying new config"
 echo "> init.lua"
