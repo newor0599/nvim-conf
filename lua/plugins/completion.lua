@@ -1,3 +1,12 @@
+local lsp = {
+    "lua_ls",
+    "pyright",
+    "tsserver",
+    "zls",
+    "cssls",
+    "html",
+    "arduino_language_server",
+}
 return {
     {
 	'windwp/nvim-autopairs',
@@ -20,12 +29,7 @@ return {
 	"williamboman/mason-lspconfig.nvim",
 	config = function()
 	    require("mason-lspconfig").setup {
-		ensure_installed = {
-		    "lua_ls",
-		    "pyright",
-		    "tsserver",
-		    "zls",
-		},
+		ensure_installed = lsp
 	    }
 	end
     },
@@ -114,9 +118,8 @@ return {
 
 	    -- Set up lspconfig.
 	    local capabilities = require('cmp_nvim_lsp').default_capabilities()
-	    local installed_lsp = {'lua_ls','tsserver','pyright', "zls"}
-	    for i,lsp in ipairs(installed_lsp) do
-		require('lspconfig')[lsp].setup {
+	    for i,l in ipairs(lsp) do
+		require('lspconfig')[l].setup {
 		    capabilities = capabilities
 		}
 	    end
