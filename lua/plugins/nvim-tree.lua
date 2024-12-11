@@ -7,7 +7,7 @@ return {
 	    update_cwd = true,
 	    git = {
 		enable = true,
-		ignore = true,
+		ignore = false,
 	    },
 	    renderer = {
 		highlight_git = true,

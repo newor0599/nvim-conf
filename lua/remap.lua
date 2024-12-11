@@ -4,6 +4,7 @@ local k = vim.keymap.set
 k({"n","v"},";",":")
 k({"n","i","v","c"},"<A-q>","<Esc>",{ remap = true})
 k("n","<Esc>","<Cmd>noh<CR>")
+k("n","$","g$")
 
 k('n','<C-l>','<C-W><C-l>')
 k('n','<C-k>','<C-W><C-k>')

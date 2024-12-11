@@ -1,12 +1,13 @@
-local lsp = {
-    "lua_ls",
-    "pyright",
-    "tsserver",
-    "zls",
-    "cssls",
-    "html",
-    "arduino_language_server",
+local mason_packages = {
+    "lua_ls", -- Lua language server
+    "ts_ls", -- Typescript/Javascript language server
+    "zls", -- zig language server
+    "cssls", -- css language server
+    "html", -- html language server
+    "arduino_language_server", -- arduino ino language server
+    "ruff" -- python linter, language server, formatter
 }
+
 return {
     {
 	'windwp/nvim-autopairs',
@@ -18,7 +19,7 @@ return {
 	config = function()
 	    vim.keymap.set('n', 'E', vim.lsp.buf.definition)
 	    vim.keymap.set('n', 'K', vim.lsp.buf.hover)
-	    vim.keymap.set({'n','v'}, "<leader>ca", vim.lsp.buf.code_action)
+	    vim.keymap.set({ 'n', 'v' }, "<leader>ca", vim.lsp.buf.code_action)
 	end
     },
     {
@@ -29,7 +30,7 @@ return {
 	"williamboman/mason-lspconfig.nvim",
 	config = function()
 	    require("mason-lspconfig").setup {
-		ensure_installed = lsp
+		ensure_installed = mason_packages
 	    }
 	end
     },
@@ -41,9 +42,9 @@ return {
 	    "rafamadriz/friendly-snippets"
 	},
 	config = function()
-	    ls = require("luasnip")
-	    vim.keymap.set({"i", "s"}, "<C-l>", function() ls.jump( 1) end, {silent = true})
-	    vim.keymap.set({"i", "s"}, "<C-j>", function() ls.jump(-1) end, {silent = true})
+	    local ls = require("luasnip")
+	    vim.keymap.set({ "i", "s" }, "<C-l>", function() ls.jump(1) end, { silent = true })
+	    vim.keymap.set({ "i", "s" }, "<C-j>", function() ls.jump(-1) end, { silent = true })
 	end
     },
 
@@ -57,11 +58,11 @@ return {
 	    'hrsh7th/cmp-cmdline',
 	},
 	config = function()
-	    local cmp = require'cmp'
+	    local cmp = require 'cmp'
 	    cmp.setup({
 		snippet = {
 		    expand = function(args)
-			require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+			require('luasnip').lsp_expand(args.body)
 		    end,
 		},
 		window = {
@@ -87,13 +88,13 @@ return {
 			else
 			    fallback()
 			end
-		    end, {"i","s","c",}),
+		    end, { "i", "s", "c", }),
 		}),
 		sources = cmp.config.sources({
 		    { name = 'nvim_lsp' }, -- LSP
-		    { name = 'buffer' },   -- Buffer
-		    { name = 'path' },     -- Path
-		    { name = 'luasnip' },  -- Snippet
+		    { name = 'buffer' }, -- Buffer
+		    { name = 'path' }, -- Path
+		    { name = 'luasnip' }, -- Snippet
 		})
 	    })
 
@@ -118,11 +119,11 @@ return {
 
 	    -- Set up lspconfig.
 	    local capabilities = require('cmp_nvim_lsp').default_capabilities()
-	    for i,l in ipairs(lsp) do
+	    for i, l in ipairs(mason_packages) do
 		require('lspconfig')[l].setup {
 		    capabilities = capabilities
 		}
 	    end
 	end
-    }
+    },
 }
