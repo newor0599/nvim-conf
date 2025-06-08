@@ -1,3 +1,3 @@
-require("lua.keymaps")
-require("lua.config")
-require("lua.packaged")
+require("keymaps")
+require("config")
+require("packaged")
