@@ -6,4 +6,5 @@ require('themify').setup({
     "therubymug/vim-pyte",
     "wadackel/vim-dogrun",
     "AlexvZyl/nordic.nvim",
+    "webhooked/kanso.nvim",
 })

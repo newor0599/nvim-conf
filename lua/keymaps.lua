@@ -1,0 +1,20 @@
+-- Remap
+vim.g.mapleader = " "
+local k = vim.keymap.set
+k({ "n" }, "<C-l>", "<C-W><C-l>")
+k({ "n" }, "<C-k>", "<C-W><C-k>", { noremap = true })
+k({ "n" }, "<C-j>", "<C-W><C-j>")
+k({ "n" }, "<C-h>", "<C-W><C-h>")
+k({ "n" }, "<Esc>", "<Cmd>noh<CR>")
+k({ "n" }, "<leader>vs", "<Cmd>vs<CR>")
+k({ "n" }, "<leader>hs", "<Cmd>sp<CR>")
+k({ "n", "v" }, ";", ":")
+k({ "n" }, "<leader>e", ":Oil<CR>")
+k({ "n" }, "<leader>t", ":terminal<CR>")
+k({ "n", "t" }, "<C-x>", "<C-\\><C-n>")
+k({ "n", "t" }, "<C-x>", "<C-\\><C-n>")
+k({ 'n' }, "<A-y>", '"+Y:lua vim.notify(\'Copied text to clipboard\')<CR>')
+k({ 'v' }, "<A-y>", '"+y:lua vim.notify(\'Copied text to clipboard\')<CR>')
+k({ 'v' }, "<A-p>", '"+p:lua vim.notify(\'Pasted text from clipboard\')<CR>')
+k({ 'n' }, "<A-p>", '"+P:lua vim.notify(\'Pasted text from clipboard\')<CR>')
+k({ 'n' }, "<C-p>", ':Telescope<CR>')
