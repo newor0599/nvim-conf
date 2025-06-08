@@ -68,6 +68,3 @@ local function generate_helptags()
   handle:close()
 end
 generate_helptags()
-
--- GUI
-vim.o.winborder = "rounded"
