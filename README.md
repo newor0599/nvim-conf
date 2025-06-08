@@ -1,6 +1,6 @@
 Starts up in 88ms!
 <br>
-Support for Python, Lua, HTML, Javascript, CSS, bash, C++
+Support for Python, Lua, HTML, Javascript, CSS, Bash, C++
 <br>
 
 ### Plugins
@@ -15,3 +15,8 @@ Support for Python, Lua, HTML, Javascript, CSS, bash, C++
 [icons](https://github.com/nvim-tree/nvim-web-devicons)<br>
 [html autotag](https://github.com/windwp/nvim-ts-autotag)<br>
 [treesitter](https://github.com/nvim-treesitter/nvim-treesitter)<br>
+[barbar](https://github.com/romgrk/barbar.nvim)<br>
+
+### Installation
+Clone all these github repository into `~/.local/share/nvim/plugins/`<br>
+Install all LSP (Python, Lua, HTML, Javascript, CSS, Bash, C++)
