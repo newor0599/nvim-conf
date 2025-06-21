@@ -1,10 +1,10 @@
 require('themify').setup({
-    "RomanAverin/charleston.nvim",
-    "datsfilipe/vesper.nvim",
-    "comfysage/aurora",
-    "comfysage/twilight-moon",
-    "therubymug/vim-pyte",
-    "wadackel/vim-dogrun",
-    "AlexvZyl/nordic.nvim",
-    "webhooked/kanso.nvim",
+  "RomanAverin/charleston.nvim",
+  "datsfilipe/vesper.nvim",
+  "comfysage/aurora",
+  "comfysage/twilight-moon",
+  "therubymug/vim-pyte",
+  "wadackel/vim-dogrun",
+  "AlexvZyl/nordic.nvim",
+  "webhooked/kanso.nvim",
 })
