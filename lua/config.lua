@@ -21,6 +21,7 @@ vim.opt.runtimepath:append(plugin_path .. "*")
 
 -- GUI
 vim.o.winborder = "rounded"
+vim.cmd('colorscheme bamboo')
 
 vim.api.nvim_create_autocmd("BufWinLeave", {
   pattern = "*",
