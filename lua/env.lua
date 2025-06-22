@@ -1,7 +1,0 @@
-require('plugins.envs.lua')
-require('plugins.envs.css')
-require('plugins.envs.python')
-require('plugins.envs.html')
-require('plugins.envs.typescript')
-require('plugins.envs.cpp')
-require('plugins.envs.bash')

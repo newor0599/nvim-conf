@@ -1,4 +1,5 @@
 require("keymaps")
-require("config")
-require("packaged")
+require("lazy_config")
+require("nvim_config")
+require("lsp_config")
 vim.api.nvim_set_hl(0, "WinSeparator", { fg = "#A0A0A0", bg = "NONE" })
