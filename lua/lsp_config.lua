@@ -31,6 +31,7 @@ vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
   end,
 })
 
+-- Format on write
 vim.api.nvim_create_autocmd("BufWritePre", {
   callback = function(args)
     vim.lsp.buf.format()
