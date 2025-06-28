@@ -14,6 +14,8 @@ k({ "n" }, "<leader>hs", "<Cmd>sp<CR>") -- Horizontal
 
 -- I'm very lazy
 k({ "n", "v" }, ";", ":")
+k({ "n", "v" }, "'", "\"")
+k({ "n" }, "''", "<Cmd>reg<CR>")
 k({ "n" }, "<Esc>", "<Cmd>noh<CR>")
 
 -- Oil
