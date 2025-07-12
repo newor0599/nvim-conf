@@ -2,15 +2,17 @@
 vim.g.mapleader = " "
 local k = vim.keymap.set
 
--- Move between splits
+-- Window manipulations
 k({ "n" }, "<C-l>", "<C-W><C-l>")
 k({ "n" }, "<C-k>", "<C-W><C-k>", { noremap = true })
 k({ "n" }, "<C-j>", "<C-W><C-j>")
 k({ "n" }, "<C-h>", "<C-W><C-h>")
-
--- Splits
 k({ "n" }, "<leader>vs", "<Cmd>vs<CR>") -- Vertical
 k({ "n" }, "<leader>hs", "<Cmd>sp<CR>") -- Horizontal
+k({ "n" }, "<A-h>", "<C-w>H")
+k({ "n" }, "<A-j>", "<C-w>J")
+k({ "n" }, "<A-k>", "<C-w>K")
+k({ "n" }, "<A-l>", "<C-w>L")
 
 -- I'm very lazy
 k({ "n", "v" }, ";", ":")
@@ -45,8 +47,8 @@ k('n', '<A-7>', ':BufferGoto 7<CR>', { silent = true })
 k('n', '<A-8>', ':BufferGoto 8<CR>', { silent = true })
 k('n', '<A-9>', ':BufferGoto 9<CR>', { silent = true })
 k('n', '<A-0>', ':BufferLast<CR>', { silent = true })
-k('n', '<A-h>', ':BufferPrevious<CR>', { silent = true })
-k('n', '<A-l>', ':BufferNext<CR>', { silent = true })
+k('n', '<A-[>', ':BufferPrevious<CR>', { silent = true })
+k('n', '<A-]>', ':BufferNext<CR>', { silent = true })
 k('n', '<A-<>', ':BufferMovePrevious<CR>', { silent = true })
 k('n', '<A->>', ':BufferMoveNext<CR>', { silent = true })
 k('n', '<A-P>', ':BufferPin<CR>', { silent = true })
