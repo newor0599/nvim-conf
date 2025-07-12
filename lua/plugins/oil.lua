@@ -69,6 +69,7 @@ return {
       --["<C-l>"] = "actions.refresh",
       ["H"] = { "actions.parent", mode = "n" },
       ["c"] = { "actions.open_cwd", mode = "n" },
+      ["_"] = { "actions.open_cwd", mode = "n" },
       --["`"] = { "actions.cd", mode = "n" },
       --["~"] = { "actions.cd", opts = { scope = "tab" }, mode = "n" },
       ["s"] = { "actions.change_sort", mode = "n" },
