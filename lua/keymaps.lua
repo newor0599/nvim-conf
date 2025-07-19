@@ -9,10 +9,6 @@ k({ "n" }, "<C-j>", "<C-W><C-j>")
 k({ "n" }, "<C-h>", "<C-W><C-h>")
 k({ "n" }, "<leader>vs", "<Cmd>vs<CR>") -- Vertical
 k({ "n" }, "<leader>hs", "<Cmd>sp<CR>") -- Horizontal
-k({ "n" }, "<A-h>", "<C-w>H")
-k({ "n" }, "<A-j>", "<C-w>J")
-k({ "n" }, "<A-k>", "<C-w>K")
-k({ "n" }, "<A-l>", "<C-w>L")
 
 -- I'm very lazy
 k({ "n", "v" }, ";", ":")

@@ -24,4 +24,6 @@ if [ "$opt" = "y" ]; then
     mkdir -p ~/.config/nvim
     mv init.lua ~/.config/nvim
     mv lua ~/.config/nvim
+else
+    echo "Installation quit"
 fi
