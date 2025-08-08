@@ -3,6 +3,8 @@ Starts up in 88ms!
 Support for Python, Lua, HTML, Javascript, CSS, Bash, C++
 <br>
 
+<img src="preview/1.png">
+
 ### Installation
 ```bash
 git clone https://github.com/newor0599/nvim-conf
