@@ -30,7 +30,7 @@ k({ 'n' }, "<A-p>", '"+P<Cmd>lua vim.notify(\'Pasted text from clipboard\')<CR>'
 k({ 'v' }, "<A-p>", '"+p<Cmd>lua vim.notify(\'Pasted text from clipboard\')<CR>')
 
 -- Telescope
-k({ 'n' }, "<C-p>", ':Telescope<CR>')
+k({ 'n' }, "<C-p>", '<Cmd>Telescope<CR>')
 
 -- Horizontal movement
 k('n', 'L', 'zl')

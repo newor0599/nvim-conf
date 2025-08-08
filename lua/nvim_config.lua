@@ -11,15 +11,6 @@ vim.api.nvim_create_autocmd("BufWinLeave", {
   command = "silent! mkview"
 })
 
-vim.api.nvim_create_autocmd("BufWinEnter", {
-  pattern = "*",
-  callback = function(args)
-    if vim.bo[args.buf].filetype == "oil" or true then
-      vim.cmd("silent! loadview")
-    end
-  end,
-})
-
 -- Textwrap
 vim.cmd("set nowrap")
 
@@ -41,36 +32,3 @@ vim.keymap.set("n", "<leader>x", function()
     vim.cmd("bd")   -- Just delete current buffer
   end
 end)
-
-if custom_plugin_structure then
-  -- Custom plugin structure
-  local plugin_path = "~/.local/share/nvim/plugins/"
-  plugin_path = vim.fn.expand(plugin_path)
-  vim.opt.runtimepath:append(plugin_path .. "*")
-
-  -- Sync documents
-  local function is_directory(path)
-    local ok, _, code = os.rename(path, path)
-    if not ok and code ~= 13 then
-      return false
-    end
-    return true
-  end
-
-  -- Function to generate help tags for plugins with a doc directory
-  local function generate_helptags()
-    local handle = io.popen('ls -1 ' .. plugin_path)
-    if not handle then
-      print("Failed to read plugins directory.")
-      return
-    end
-    for plugin in handle:lines() do
-      local doc_path = plugin_path .. "/" .. plugin .. "/doc"
-      if is_directory(doc_path) then
-        vim.cmd('helptags ' .. vim.fn.fnameescape(doc_path))
-      end
-    end
-    handle:close()
-  end
-  generate_helptags()
-end
