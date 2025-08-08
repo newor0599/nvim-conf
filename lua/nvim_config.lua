@@ -1,4 +1,3 @@
-local custom_plugin_structure = false
 -- Line number
 vim.cmd("set relativenumber")
 vim.cmd("set number")
@@ -14,7 +13,11 @@ vim.api.nvim_create_autocmd("BufWinLeave", {
 
 vim.api.nvim_create_autocmd("BufWinEnter", {
   pattern = "*",
-  command = "silent! loadview"
+  callback = function(args)
+    if vim.bo[args.buf].filetype == "oil" or true then
+      vim.cmd("silent! loadview")
+    end
+  end,
 })
 
 -- Textwrap

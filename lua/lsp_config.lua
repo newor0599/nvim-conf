@@ -65,11 +65,6 @@ lspconfig.cssls.setup({
   },
 })
 
--- HTML
-lspconfig.htmlls.setup({
-  capabilities = require 'blink.cmp'.get_lsp_capabilities(),
-})
-
 -- Lua
 lspconfig.lua_ls.setup({
   capabilities = require 'blink.cmp'.get_lsp_capabilities(),
