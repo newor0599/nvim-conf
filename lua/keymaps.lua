@@ -15,13 +15,14 @@ k({ "n", "v" }, ";", ":")
 k({ "n", "v" }, "'", "\"")
 k({ "n", "v" }, "' ", "<Cmd>reg<CR>")
 k({ "n" }, "<Esc>", "<Cmd>noh<CR>")
+k({ "n" }, "<C-s>", "<Cmd>lua vim.lsp.buf.format()<CR>")
 
 -- Oil
 k({ "n" }, "<leader>e", "<Cmd>Oil<CR>")
 
 -- Terminal
 k({ "n" }, "<leader>t", "<Cmd>terminal<CR>")
-k({ "n", "t" }, "<C-x>", "<C-\\><C-n>")
+k({ "t" }, "<C-x>", "<C-\\><C-n>")
 
 -- System clipboard
 k({ 'n' }, "<A-y>", '"+Y<Cmd>lua vim.notify(\'Copied text to clipboard\')<CR>')
