@@ -16,6 +16,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
     --buf_set_keymap("n", "<leader>rn", vim.lsp.buf.rename)
     --buf_set_keymap("n", "gr", vim.lsp.buf.references)
     buf_set_keymap("n", "<leader>ca", vim.lsp.buf.code_action)
+    buf_set_keymap("n",']d',vim.diagnostic.goto_next)
+    buf_set_keymap("n",'[d',vim.diagnostic.goto_prev)
     --[[
         -- Neovim auto completion
         vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
@@ -39,6 +41,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 })
 
 local lspconfig = require("lspconfig")
+
 -- Bash
 lspconfig.bashls.setup({
   capabilities = require 'blink.cmp'.get_lsp_capabilities(),
@@ -91,6 +94,7 @@ lspconfig.lua_ls.setup({
 lspconfig.ruff.setup({
   capabilities = require 'blink.cmp'.get_lsp_capabilities(),
 })
+
 -- Pyright documentation
 lspconfig.pyright.setup({
   settings = {
@@ -118,6 +122,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end,
   desc = 'LSP: Disable hover capability from Ruff',
 })
+
 -- Ruff
 require('lspconfig').ruff.setup({
   init_options = {
@@ -131,3 +136,6 @@ require('lspconfig').ruff.setup({
 lspconfig.ts_ls.setup({
   filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact", },
 })
+
+-- JSON
+lspconfig.jsonls.setup({})
