@@ -16,8 +16,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
     --buf_set_keymap("n", "<leader>rn", vim.lsp.buf.rename)
     --buf_set_keymap("n", "gr", vim.lsp.buf.references)
     buf_set_keymap("n", "<leader>ca", vim.lsp.buf.code_action)
-    buf_set_keymap("n",']d',vim.diagnostic.goto_next)
-    buf_set_keymap("n",'[d',vim.diagnostic.goto_prev)
+    buf_set_keymap("n", ']d', vim.diagnostic.goto_next)
+    buf_set_keymap("n", '[d', vim.diagnostic.goto_prev)
     --[[
         -- Neovim auto completion
         vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
@@ -40,26 +40,27 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   end
 })
 
-local lspconfig = require("lspconfig")
-
 -- Bash
-lspconfig.bashls.setup({
+vim.lsp.enable("bashls")
+vim.lsp.config("bashls", {
   capabilities = require 'blink.cmp'.get_lsp_capabilities(),
   cmd = { 'bash-language-server', 'start' },
   filetypes = { 'bash', 'sh' }
 })
 
 -- C++
-lspconfig.clangd.setup({
+vim.lsp.enable("clangd")
+vim.lsp.config("clangd",{
   capabilities = require 'blink.cmp'.get_lsp_capabilities(),
   cmd = { 'clangd', '--background-index', '--clang-tidy' },
   init_options = {
-    fallbackFlags = { '-std=c++17' },
+    fallbackFlags = {},
   },
 })
 
 -- Css
-lspconfig.cssls.setup({
+vim.lsp.enable("cssls")
+vim.lsp.config("cssls",{
   capabilities = require 'blink.cmp'.get_lsp_capabilities(),
   settings = {
     css = { validate = true },
@@ -69,7 +70,8 @@ lspconfig.cssls.setup({
 })
 
 -- Lua
-lspconfig.lua_ls.setup({
+vim.lsp.enable("lua_ls")
+vim.lsp.config("lua_ls",{
   capabilities = require 'blink.cmp'.get_lsp_capabilities(),
   settings = {
     Lua = {
@@ -91,12 +93,13 @@ lspconfig.lua_ls.setup({
 })
 
 -- Python
-lspconfig.ruff.setup({
+vim.lsp.enable('ruff')
+vim.lsp.config("ruff",{
   capabilities = require 'blink.cmp'.get_lsp_capabilities(),
 })
 
 -- Pyright documentation
-lspconfig.pyright.setup({
+vim.lsp.config("pyright",{
   settings = {
     pyright = {
       disableOrganizeImports = true
@@ -124,7 +127,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 
 -- Ruff
-require('lspconfig').ruff.setup({
+vim.lsp.enable("ruff")
+vim.lsp.config("ruff",{
   init_options = {
     settings = {
       configuration = "~/.config/nvim/lua/ruff.toml"
@@ -133,9 +137,11 @@ require('lspconfig').ruff.setup({
 })
 
 -- Typescript
-lspconfig.ts_ls.setup({
+vim.lsp.enable("ts_ls")
+vim.lsp.config("ts_ls",{
   filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact", },
 })
 
 -- JSON
-lspconfig.jsonls.setup({})
+vim.lsp.enable("jsonls")
+vim.lsp.config("jsonls",{})
