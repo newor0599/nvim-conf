@@ -10,7 +10,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
     -- Set up key mappings for LSP features
     --buf_set_keymap("n", "gd", vim.lsp.buf.definition)
-    buf_set_keymap("n", "<C-S-h>", vim.lsp.buf.hover)
+    buf_set_keymap("n", "gh", vim.lsp.buf.hover)
     --buf_set_keymap("n", "gi", vim.lsp.buf.implementation)
     --buf_set_keymap("n", "<C-k>", vim.lsp.buf.signature_help)
     --buf_set_keymap("n", "<leader>rn", vim.lsp.buf.rename)
@@ -41,38 +41,40 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 })
 
 -- Bash
-vim.lsp.enable("bashls")
-vim.lsp.config("bashls", {
+vim.lsp.config["bashls"] = {
   capabilities = require 'blink.cmp'.get_lsp_capabilities(),
   cmd = { 'bash-language-server', 'start' },
   filetypes = { 'bash', 'sh' }
-})
+}
+vim.lsp.enable("bashls")
 
--- C++
-vim.lsp.enable("clangd")
-vim.lsp.config("clangd",{
+-- C family
+vim.lsp.config["clangd"] = {
   capabilities = require 'blink.cmp'.get_lsp_capabilities(),
   cmd = { 'clangd', '--background-index', '--clang-tidy' },
   init_options = {
     fallbackFlags = {},
   },
-})
+  filetypes = { 'cpp', 'c', 'cs' }
+}
+vim.lsp.enable("clangd")
 
 -- Css
-vim.lsp.enable("cssls")
-vim.lsp.config("cssls",{
+vim.lsp.config["cssls"] = {
   capabilities = require 'blink.cmp'.get_lsp_capabilities(),
   settings = {
     css = { validate = true },
     scss = { validate = true },
     less = { validate = true },
   },
-})
+  filetypes = { "css", 'scss' }
+}
+vim.lsp.enable("cssls")
 
 -- Lua
-vim.lsp.enable("lua_ls")
-vim.lsp.config("lua_ls",{
+vim.lsp.config["lua_ls"] = {
   capabilities = require 'blink.cmp'.get_lsp_capabilities(),
+  filetypes = { "lua" },
   settings = {
     Lua = {
       runtime = {
@@ -90,16 +92,12 @@ vim.lsp.config("lua_ls",{
       },
     },
   },
-})
-
--- Python
-vim.lsp.enable('ruff')
-vim.lsp.config("ruff",{
-  capabilities = require 'blink.cmp'.get_lsp_capabilities(),
-})
+}
+vim.lsp.enable("lua_ls")
 
 -- Pyright documentation
-vim.lsp.config("pyright",{
+vim.lsp.config["pyright"] = {
+  filetypes = { "python" },
   settings = {
     pyright = {
       disableOrganizeImports = true
@@ -110,7 +108,8 @@ vim.lsp.config("pyright",{
       }
     }
   }
-})
+}
+vim.lsp.enable("pyright")
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup('lsp_attach_disable_ruff_hover', { clear = true }),
   callback = function(args)
@@ -126,22 +125,24 @@ vim.api.nvim_create_autocmd("LspAttach", {
   desc = 'LSP: Disable hover capability from Ruff',
 })
 
--- Ruff
-vim.lsp.enable("ruff")
-vim.lsp.config("ruff",{
+-- Python
+vim.lsp.config["ruff"] = {
+  capabilities = require 'blink.cmp'.get_lsp_capabilities(),
+  filetypes = { 'python' },
   init_options = {
     settings = {
       configuration = "~/.config/nvim/lua/ruff.toml"
     }
   }
-})
+}
+vim.lsp.enable("ruff")
 
 -- Typescript
-vim.lsp.enable("ts_ls")
-vim.lsp.config("ts_ls",{
+vim.lsp.config["ts_ls"] = {
   filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact", },
-})
+}
+vim.lsp.enable("ts_ls")
 
 -- JSON
+vim.lsp.config["jsonls"] = { filetypes = { "json" } }
 vim.lsp.enable("jsonls")
-vim.lsp.config("jsonls",{})
