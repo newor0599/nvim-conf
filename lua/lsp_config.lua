@@ -9,12 +9,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end
 
     -- Set up key mappings for LSP features
-    --buf_set_keymap("n", "gd", vim.lsp.buf.definition)
+    buf_set_keymap("n", "gd", vim.lsp.buf.definition)
     buf_set_keymap("n", "gh", vim.lsp.buf.hover)
-    --buf_set_keymap("n", "gi", vim.lsp.buf.implementation)
+    buf_set_keymap("n", "gi", vim.lsp.buf.implementation)
     --buf_set_keymap("n", "<C-k>", vim.lsp.buf.signature_help)
-    --buf_set_keymap("n", "<leader>rn", vim.lsp.buf.rename)
-    --buf_set_keymap("n", "gr", vim.lsp.buf.references)
+    buf_set_keymap("n", "<leader>rn", vim.lsp.buf.rename)
+    buf_set_keymap("n", "gr", vim.lsp.buf.references)
     buf_set_keymap("n", "<leader>ca", vim.lsp.buf.code_action)
     buf_set_keymap("n", ']d', vim.diagnostic.goto_next)
     buf_set_keymap("n", '[d', vim.diagnostic.goto_prev)
@@ -95,21 +95,6 @@ vim.lsp.config["lua_ls"] = {
 }
 vim.lsp.enable("lua_ls")
 
--- Pyright documentation
-vim.lsp.config["pyright"] = {
-  filetypes = { "python" },
-  settings = {
-    pyright = {
-      disableOrganizeImports = true
-    },
-    python = {
-      analysis = {
-        ignore = { '*' }
-      }
-    }
-  }
-}
-vim.lsp.enable("pyright")
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup('lsp_attach_disable_ruff_hover', { clear = true }),
   callback = function(args)
@@ -136,6 +121,8 @@ vim.lsp.config["ruff"] = {
   }
 }
 vim.lsp.enable("ruff")
+-- vim.lsp.enable("ty")
+vim.lsp.enable("basedpyright")
 
 -- Typescript
 vim.lsp.config["ts_ls"] = {
