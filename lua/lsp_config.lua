@@ -141,8 +141,8 @@ vim.lsp.config["basedpyright"] = {
   }
 }
 vim.lsp.enable("ruff")
--- vim.lsp.enable("ty")
-vim.lsp.enable("basedpyright")
+vim.lsp.enable("ty")
+-- vim.lsp.enable("basedpyright")
 
 -- Typescript
 vim.lsp.config["ts_ls"] = {
