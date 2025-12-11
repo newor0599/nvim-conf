@@ -35,7 +35,7 @@ vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
 
 -- Format on write
 vim.api.nvim_create_autocmd("BufWritePre", {
-  callback = function(args)
+  callback = function(_)
     vim.lsp.buf.format()
   end
 })
@@ -67,7 +67,8 @@ vim.lsp.config["cssls"] = {
     scss = { validate = true },
     less = { validate = true },
   },
-  filetypes = { "css", 'scss' }
+  filetypes = { "css", 'scss' },
+  cmd = { "vscode-css-language-server", '--stdio' }
 }
 vim.lsp.enable("cssls")
 
@@ -120,6 +121,25 @@ vim.lsp.config["ruff"] = {
     }
   }
 }
+vim.lsp.config["basedpyright"] = {
+  capabilities = require 'blink.cmp'.get_lsp_capabilities(),
+  filetypes = { 'python' },
+  init_options = {
+    settings = {
+      basedpyright = {
+        disableOrganizeImports = true,
+        analysis = {
+          typeCheckingMode = "basic", -- default, non-strict
+        },
+      },
+      python = {
+        analysis = {
+          autoImportCompletions = false,
+        },
+      },
+    },
+  }
+}
 vim.lsp.enable("ruff")
 -- vim.lsp.enable("ty")
 vim.lsp.enable("basedpyright")
@@ -131,5 +151,13 @@ vim.lsp.config["ts_ls"] = {
 vim.lsp.enable("ts_ls")
 
 -- JSON
-vim.lsp.config["jsonls"] = { filetypes = { "json" } }
-vim.lsp.enable("jsonls")
+vim.lsp.config["json_ls"] = { filetypes = { "json" } }
+vim.lsp.enable("json_ls")
+
+-- HTML
+vim.lsp.config['html_ls'] = {
+  capabilities = require 'blink.cmp'.get_lsp_capabilities(),
+  filetypes = { 'html' },
+  cmd = { 'vscode-html-language-server', '--stdio' }
+}
+vim.lsp.enable("html_ls")
