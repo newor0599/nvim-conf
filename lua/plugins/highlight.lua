@@ -5,5 +5,6 @@ return {
   build = ":TSUpdate",
   opts = {
     ensure_installed = { 'lua', 'python', 'html', 'cpp', 'bash' },
+    highlight = { enable = true }
   }
 }

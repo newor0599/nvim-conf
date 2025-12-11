@@ -1,3 +1,4 @@
 return {
-  "ribru17/bamboo.nvim"
+  dependencies = "rktjmp/lush.nvim",
+  "zenbones-theme/zenbones.nvim"
 }

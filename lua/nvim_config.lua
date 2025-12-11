@@ -21,7 +21,7 @@ vim.opt.expandtab = true -- Convert tabs to spaces
 
 -- GUI
 vim.o.winborder = "rounded"
-vim.cmd('colorscheme bamboo')
+vim.cmd('colorscheme kanagawabones')
 
 -- Close buffer but ensure Neovim stays open with an empty buffer
 vim.keymap.set("n", "<leader>x", function()
@@ -32,3 +32,8 @@ vim.keymap.set("n", "<leader>x", function()
     vim.cmd("bd")   -- Just delete current buffer
   end
 end)
+
+vim.api.nvim_set_hl(0, "@string", { fg = "#98B06F" })
+vim.api.nvim_set_hl(0, "@type", { fg = "#797596" })
+vim.api.nvim_set_hl(0, "@variable", { fg = "#F2A359" })
+vim.api.nvim_set_hl(0, "@function", { fg = "#D33F49" })
