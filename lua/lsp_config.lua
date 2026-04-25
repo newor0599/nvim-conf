@@ -16,28 +16,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     buf_set_keymap("n", "<leader>rn", vim.lsp.buf.rename)
     buf_set_keymap("n", "gr", vim.lsp.buf.references)
     buf_set_keymap("n", "<leader>ca", vim.lsp.buf.code_action)
-    buf_set_keymap("n", ']d', vim.diagnostic.goto_next)
-    buf_set_keymap("n", '[d', vim.diagnostic.goto_prev)
-    --[[
-        -- Neovim auto completion
-        vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
-        vim.keymap.set("i", "<C-CR>", "<C-x><C-o>", { noremap = true, silent = true })
-        ]] --
   end,
-})
-vim.o.updatetime = 250
--- Show diagnostics in a floating window on CursorHold
-vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-  callback = function()
-    vim.diagnostic.open_float(nil, { focus = false })
-  end,
-})
-
--- Format on write
-vim.api.nvim_create_autocmd("BufWritePre", {
-  callback = function(_)
-    vim.lsp.buf.format()
-  end
 })
 
 -- Bash
@@ -91,67 +70,36 @@ vim.lsp.config["lua_ls"] = {
       telemetry = {
         enable = false,
       },
+      format = {
+        enable = true,
+      }
     },
   },
 }
 vim.lsp.enable("lua_ls")
 
-vim.api.nvim_create_autocmd("LspAttach", {
-  group = vim.api.nvim_create_augroup('lsp_attach_disable_ruff_hover', { clear = true }),
-  callback = function(args)
-    local client = vim.lsp.get_client_by_id(args.data.client_id)
-    if client == nil then
-      return
-    end
-    if client.name == 'ruff' then
-      -- Disable hover in favor of Pyright
-      client.server_capabilities.hoverProvider = false
-    end
-  end,
-  desc = 'LSP: Disable hover capability from Ruff',
-})
-
--- Python
-vim.lsp.config["ruff"] = {
+vim.lsp.config["ty"] = {
   capabilities = require 'blink.cmp'.get_lsp_capabilities(),
-  filetypes = { 'python' },
-  init_options = {
-    settings = {
-      configuration = "~/.config/nvim/lua/ruff.toml"
-    }
-  }
-}
-vim.lsp.config["basedpyright"] = {
-  capabilities = require 'blink.cmp'.get_lsp_capabilities(),
-  filetypes = { 'python' },
-  init_options = {
-    settings = {
-      basedpyright = {
-        disableOrganizeImports = true,
-        analysis = {
-          typeCheckingMode = "basic", -- default, non-strict
-        },
-      },
-      python = {
-        analysis = {
-          autoImportCompletions = false,
-        },
-      },
-    },
-  }
+  filetypes={'python'},
+  cmd={'ty','server'}
 }
 vim.lsp.enable("ruff")
 vim.lsp.enable("ty")
--- vim.lsp.enable("basedpyright")
 
--- Typescript
+-- Script family
 vim.lsp.config["ts_ls"] = {
+  capabilities = require 'blink.cmp'.get_lsp_capabilities(),
   filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact", },
+  cmd = { 'typescript-language-server', '--stdio' }
 }
 vim.lsp.enable("ts_ls")
 
 -- JSON
-vim.lsp.config["json_ls"] = { filetypes = { "json" } }
+vim.lsp.config["json_ls"] = {
+  capabilities = require 'blink.cmp'.get_lsp_capabilities(),
+  filetypes = { "json" },
+  cmd = { 'vscode-json-language-server', '--stdio' }
+}
 vim.lsp.enable("json_ls")
 
 -- HTML
@@ -161,3 +109,12 @@ vim.lsp.config['html_ls'] = {
   cmd = { 'vscode-html-language-server', '--stdio' }
 }
 vim.lsp.enable("html_ls")
+
+-- PHP
+vim.lsp.config['php_ls'] = {
+  capabilities = require 'blink.cmp'.get_lsp_capabilities(),
+  filetypes = { "php" },
+  root_markers = { '.git', 'composer.json', '.phpactor.json', '.phpactor.yml' },
+  cmd = { 'phpactor', 'language-server', '-vvv' }
+}
+vim.lsp.enable("php_ls")

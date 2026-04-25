@@ -1,5 +1,5 @@
 return {
-  {"neovim/nvim-lspconfig"},
+  { "neovim/nvim-lspconfig" },
   -- Autopair
   {
     "altermo/ultimate-autopair.nvim",
@@ -29,14 +29,15 @@ return {
   },
   {
     "https://github.com/Saghen/blink.cmp",
-    opts={
+    branch = 'v1',
+    opts = {
       keymap = {
         preset = 'default',
         ['<C-j>'] = { 'select_next' },
         ['<C-k>'] = { 'select_prev' },
         ['<C-S-k>'] = { 'scroll_documentation_up' },
         ['<C-S-j>'] = { 'scroll_documentation_down' },
-        ['<C-Space>'] = { 'show_documentation', 'show_signature' },
+        ['<C-Space>'] = { 'show', 'show_documentation', 'show_signature' },
         ['<C-a>'] = { 'show_and_insert' }
       },
       appearance = {
@@ -56,13 +57,13 @@ return {
         menu = {
           border = 'rounded',
           draw = {
-
+            treesitter = { "lsp" }
           }
         },
         --ghost_text = { enabled = true }
       },
       sources = { default = { 'lsp', 'buffer', 'path' } },
-      fuzzy = { implementation = "lua" }
+      fuzzy={implementation="prefer_rust"}
     }
   }
 }
