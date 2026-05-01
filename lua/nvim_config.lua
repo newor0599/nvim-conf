@@ -19,6 +19,42 @@ vim.g.neovide_cursor_vfx_particle_density = 2
 -- })
 
 -- I haven't found a suitable fold method for my workflow :(
+  --
+  --
+-- 
+-- closes all popups when leaving buffer
+local function close_blink_popups_on_leave()
+    -- Get all open windows
+    local all_wins = vim.api.nvim_list_wins()
+    
+    for _, win_id in ipairs(all_wins) do
+        -- Check if the window is floating/popup
+        local win_config = vim.api.nvim_win_get_config(win_id)
+        if win_config.relative ~= '' then
+            -- Get the buffer associated with this window
+            local buf_id = vim.api.nvim_win_get_buf(win_id)
+            local buf_name = vim.api.nvim_buf_get_name(buf_id) or ''
+            
+            -- Close if it's a blink.cmp window (based on buffer name or filetype)
+            -- blink.cmp's documentation/signature windows have distinctive names or filetypes
+            if buf_name:find('blink') or 
+               buf_name:find('cmp') or
+               vim.bo[buf_id].filetype == 'markdown' or  -- documentation window filetype
+               vim.bo[buf_id].filetype == '' then        -- completion windows often have no filetype
+                -- Don't close actual file buffers (they have real file paths)
+                if not buf_name:match('^/') or buf_name == '' then
+                    pcall(vim.api.nvim_win_close, win_id, false)
+                end
+            end
+        end
+    end
+end
+
+-- Auto-command to trigger when leaving a window/buffer
+vim.api.nvim_create_autocmd("WinLeave", {
+    callback = close_blink_popups_on_leave,
+    desc = "Close blink.cmp popups when leaving buffer",
+})
 
 -- Textwrap
 vim.cmd("set nowrap")

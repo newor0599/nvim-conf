@@ -6,6 +6,6 @@ return {
       virtual_text = false,
     })
     vim.diagnostic.config({ virtual_lines = true })
-    vim.diagnostic.config({ virtual_lines = { only_current_line = true } })
+    -- vim.diagnostic.config({ virtual_lines = { only_current_line = true } })
   end,
 }
