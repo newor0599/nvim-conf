@@ -1,11 +1,30 @@
 return {
-  "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-  config = function()
-    require("lsp_lines").setup()
-    vim.diagnostic.config({
-      virtual_text = false,
-    })
-    vim.diagnostic.config({ virtual_lines = true })
-    -- vim.diagnostic.config({ virtual_lines = { only_current_line = true } })
-  end,
+	"rachartier/tiny-inline-diagnostic.nvim",
+	event = "VeryLazy",
+	priority = 1000,
+	config = function()
+		require("tiny-inline-diagnostic").setup({
+			signs = {
+				left = "",
+				right = "",
+				diag = "󱊡 ",
+				arrow = "",
+				up_arrow = "",
+				vertical = " │",
+				vertical_end = " ╰",
+			},
+			blend = {
+				factor = 0.22,
+			},
+			options = {
+        add_messages = {
+            display_count = true,
+        },
+        multilines = {
+            enabled = true,
+        },
+			},
+		})
+		vim.diagnostic.config({ virtual_text = false })
+ 	end,
 }
