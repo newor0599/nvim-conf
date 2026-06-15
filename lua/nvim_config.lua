@@ -29,7 +29,7 @@ vim.keymap.set("n", "<leader>x", function()
 end)
 
 -- Kickstart treesitter for python for no reason :(
-vim.api.nvim_create_autocmd('FileType', {
-  pattern = { 'python' },
-  callback = function() vim.treesitter.start() end,
-})
+-- vim.api.nvim_create_autocmd('FileType', {
+--   pattern = { 'python' },
+--   callback = function() vim.treesitter.start() end,
+-- })
