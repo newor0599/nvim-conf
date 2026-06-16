@@ -17,14 +17,14 @@ return {
 				factor = 0.22,
 			},
 			options = {
-        add_messages = {
-            display_count = true,
-        },
-        multilines = {
-            enabled = true,
-        },
+				add_messages = {
+					display_count = true,
+				},
+				multilines = {
+					enabled = true,
+				},
 			},
 		})
 		vim.diagnostic.config({ virtual_text = false })
- 	end,
+	end,
 }

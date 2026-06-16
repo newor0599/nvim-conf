@@ -11,8 +11,8 @@ vim.g.neovide_cursor_vfx_particle_density = 2
 vim.cmd("set nowrap")
 
 -- Tab to spaces
-vim.opt.tabstop = 2      -- Tab key inserts 2 spaces
-vim.opt.shiftwidth = 2   -- Indent is 2 spaces
+vim.opt.tabstop = 2 -- Tab key inserts 2 spaces
+vim.opt.shiftwidth = 2 -- Indent is 2 spaces
 vim.opt.expandtab = true -- Convert tabs to spaces
 
 -- GUI
@@ -20,12 +20,12 @@ vim.o.winborder = "rounded"
 
 -- Close buffer but ensure Neovim stays open with an empty buffer
 vim.keymap.set("n", "<leader>x", function()
-  if #vim.fn.getbufinfo({ buflisted = 1 }) <= 1 then
-    vim.cmd("enew") -- Create new empty buffer first
-    vim.cmd("bd #") -- Delete the previous (now becomes #)
-  else
-    vim.cmd("bd")   -- Just delete current buffer
-  end
+	if #vim.fn.getbufinfo({ buflisted = 1 }) <= 1 then
+		vim.cmd("enew") -- Create new empty buffer first
+		vim.cmd("bd #") -- Delete the previous (now becomes #)
+	else
+		vim.cmd("bd") -- Just delete current buffer
+	end
 end)
 
 -- Kickstart treesitter for python for no reason :(

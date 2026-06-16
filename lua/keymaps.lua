@@ -77,8 +77,8 @@ k("n", "<leader>db", dap.toggle_breakpoint, { desc = "Debug: Toggle Breakpoint" 
 k("n", "<leader>dr", dap.repl.open, { desc = "Debug: Open REPL" })
 
 -- fzf search
-k("n","<leader>sl","<Cmd>FzfLua blines<cr>")
-k("n","<leader>sb","<Cmd>FzfLua buffers<cr>")
-k("n","<leader>su","<Cmd>FzfLua undotree<cr>")
-k("n","<leader>sr","<Cmd>FzfLua registers<cr>")
-k("n","<leader>sf","<Cmd>FzfLua grep_project<cr>")
+k("n", "<leader>sl", "<Cmd>FzfLua blines<cr>")
+k("n", "<leader>sb", "<Cmd>FzfLua buffers<cr>")
+k("n", "<leader>su", "<Cmd>FzfLua undotree<cr>")
+k("n", "<leader>sr", "<Cmd>FzfLua registers<cr>")
+k("n", "<leader>sf", "<Cmd>FzfLua grep_project<cr>")
